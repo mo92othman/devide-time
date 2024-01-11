@@ -1,29 +1,17 @@
 // src/App.js
-import React, { useState } from 'react';
-import Header from './components/Header';
-import NewComponent from './components/NewComponent'; // Import the new component
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import HomePage from './pages/HomePage';
+import UserPage from './pages/UserPage';
 
 function App() {
-  const [showNewComponent, setShowNewComponent] = useState(false);
-
-  const handleButtonClick = () => {
-    setShowNewComponent(true);
-  };
-
   return (
-    <div className="bg-gray-200 p-4">
-      <Header />
-      <p className="text-xl font-bold text-blue-600">
-        This is a part of the body
-      </p>
-      <button
-        className="bg-blue-500 hover:bg-blue-300 text-white font-bold py-2 px-4 rounded"
-        onClick={handleButtonClick}
-      >
-        Click me
-      </button>
-      {showNewComponent && <NewComponent />}
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/events" element={<UserPage />} />
+      </Routes>
+    </Router>
   );
 }
 
