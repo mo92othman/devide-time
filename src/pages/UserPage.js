@@ -14,7 +14,6 @@ function UserPage() {
         <div className="w-1/4 p-4">
           <UserProfile />
           <EventList />
-          <NewEventForm />
         </div>
 
         {/* Main Content */}
