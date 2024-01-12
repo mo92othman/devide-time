@@ -1,30 +1,39 @@
 import React, { useState } from 'react';
+import { useAppState } from '../../AppStateContext';
+import UserForm from './UserForm';
 import {
   calculateTotalAmount,
   calculateTransactions,
 } from '../../helpers/graphUtils';
-import UserForm from './UserForm'; // Update this import path based on your project structure
 
-function Event() {
-  const [users, setUsers] = useState([]);
+function EventDetail() {
+  const { state, dispatch } = useAppState();
+  const eventId = 2; // Replace with the actual event ID or pass it as a prop
+  const event = state.events.find((event) => event.id === eventId) || {
+    users: [],
+    transactions: [],
+  };
+
   const [transactionsList, setTransactionsList] = useState([]);
 
-  const totalAmount = calculateTotalAmount(users);
-
-  const addUser = (newUser) => {
-    setUsers([...users, { id: users.length + 1, ...newUser }]);
-  };
+  const totalAmount = calculateTotalAmount(event.users);
 
   const settleDebts = () => {
-    // Call a function to calculate transactions
-    const transactions = calculateTransactions(users);
+    try {
+      const transactions = calculateTransactions(event.users);
+      dispatch({
+        type: 'SET_TRANSACTIONS',
+        payload: { eventId, transactions },
+      });
 
-    // Update the state with the transactions list
-    setTransactionsList(transactions);
+      setTransactionsList(transactions); // Update local state
+    } catch (error) {
+      console.error('Error calculating transactions:', error);
+    }
   };
 
-  // Helper function to get user by ID
-  const getUserById = (userId) => users.find((user) => user.id === userId);
+  const getUserById = (userId) =>
+    event.users.find((user) => user.id === userId);
 
   return (
     <div className="bg-gray-100 min-h-screen py-8">
@@ -33,9 +42,8 @@ function Event() {
           Total Amount: ${totalAmount}
         </h1>
 
-        {/* Display Users and Payments */}
         <ul className="list-disc pl-4">
-          {users.map((user) => (
+          {event.users.map((user) => (
             <li key={user.id} className="mb-2">
               {user.name}: ${user.amount}
             </li>
@@ -43,7 +51,7 @@ function Event() {
         </ul>
 
         {/* User Form */}
-        <UserForm onAddUser={addUser} />
+        <UserForm eventId={eventId} />
 
         {/* Button to Settle Debts */}
         <button
@@ -72,4 +80,4 @@ function Event() {
   );
 }
 
-export default Event;
+export default EventDetail;
