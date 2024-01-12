@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
+import { useAppState } from '../../AppStateContext';
 
-const UserForm = ({ onAddUser }) => {
+const UserForm = ({ eventId }) => {
+  // Use the context to access state and dispatch
+  const { dispatch } = useAppState();
+
   const [newUserName, setNewUserName] = useState('');
   const [newUserAmount, setNewUserAmount] = useState('');
 
@@ -10,7 +14,13 @@ const UserForm = ({ onAddUser }) => {
         name: newUserName,
         amount: parseFloat(newUserAmount),
       };
-      onAddUser(newUser);
+
+      // Dispatch an action to add a new user to the state
+      dispatch({
+        type: 'ADD_USER',
+        payload: { eventId, ...newUser, id: Date.now() },
+      });
+
       setNewUserName('');
       setNewUserAmount('');
     }
