@@ -3,6 +3,7 @@ import React, { createContext, useContext, useReducer } from 'react';
 // The initial state
 const initialState = {
   events: [], // Array to store events
+  currentEventId: null, // New state property to hold the current event ID
   // other relevant state properties could be added here
 };
 
@@ -65,6 +66,12 @@ const appStateReducer = (state, action) => {
       return {
         ...state,
         transactions: action.payload,
+      };
+
+    case 'SET_CURRENT_EVENT':
+      return {
+        ...state,
+        currentEventId: action.payload,
       };
     // Add other cases
     default:

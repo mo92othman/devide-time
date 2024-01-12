@@ -8,22 +8,28 @@ import {
 
 function EventDetail() {
   const { state, dispatch } = useAppState();
-  const eventId = 2; // Replace with the actual event ID or pass it as a prop
-  const event = state.events.find((event) => event.id === eventId) || {
+
+  // Get the current event ID from the global state
+  const currentEventId = state.currentEventId;
+
+  // Get the current event using the currentEventId
+  const currentEvent = state.events.find(
+    (event) => event.id === currentEventId,
+  ) || {
     users: [],
     transactions: [],
   };
 
   const [transactionsList, setTransactionsList] = useState([]);
 
-  const totalAmount = calculateTotalAmount(event.users);
+  const totalAmount = calculateTotalAmount(currentEvent.users);
 
   const settleDebts = () => {
     try {
-      const transactions = calculateTransactions(event.users);
+      const transactions = calculateTransactions(currentEvent.users);
       dispatch({
         type: 'SET_TRANSACTIONS',
-        payload: { eventId, transactions },
+        payload: { eventId: currentEventId, transactions },
       });
 
       setTransactionsList(transactions); // Update local state
@@ -33,7 +39,7 @@ function EventDetail() {
   };
 
   const getUserById = (userId) =>
-    event.users.find((user) => user.id === userId);
+    currentEvent.users.find((user) => user.id === userId);
 
   return (
     <div className="bg-gray-100 min-h-screen py-8">
@@ -43,7 +49,7 @@ function EventDetail() {
         </h1>
 
         <ul className="list-disc pl-4">
-          {event.users.map((user) => (
+          {currentEvent.users.map((user) => (
             <li key={user.id} className="mb-2">
               {user.name}: ${user.amount}
             </li>
@@ -51,7 +57,7 @@ function EventDetail() {
         </ul>
 
         {/* User Form */}
-        <UserForm eventId={eventId} />
+        <UserForm eventId={currentEventId} />
 
         {/* Button to Settle Debts */}
         <button
