@@ -1,6 +1,7 @@
 import { useAppState } from '../../AppStateContext';
 import React from 'react';
 import eventIcon from '../../assets/event.svg';
+import deleteIcon from '../../assets/delete.svg';
 
 function EventList() {
   // Use the context to access state and dispatch
@@ -24,6 +25,12 @@ function EventList() {
       payload: eventId,
     });
   };
+  const deleteEvent = (eventId) => {
+    dispatch({
+      type: 'DELETE_EVENT',
+      payload: eventId,
+    });
+  };
 
   return (
     <div className="mt-4">
@@ -38,13 +45,22 @@ function EventList() {
         {events.map((event) => (
           <li
             key={event.id}
-            className="mb-2 cursor-pointer hover:bg-gray-100 transform transition-transform duration-300 ease-in-out p-2 rounded-md"
+            className="mb-2 cursor-pointer hover:bg-green-200 transform duration-100 ease-in-out p-2 rounded-md flex justify-between items-center"
             onClick={() => {
               setCurrentEvent(event.id);
               console.log('Current Event:', event);
             }}
           >
-            {event.name}
+            <span>{event.name}</span>
+            <img
+              src={deleteIcon}
+              alt="Delete Icon"
+              className="w-4 h-4 cursor-pointer transform hover:scale-110"
+              onClick={(e) => {
+                e.stopPropagation(); // Stop event propagation
+                deleteEvent(event.id);
+              }}
+            />
           </li>
         ))}
       </ul>

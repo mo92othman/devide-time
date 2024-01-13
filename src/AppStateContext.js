@@ -1,16 +1,12 @@
 import React, { createContext, useContext, useReducer } from 'react';
 
-// The initial state
 const initialState = {
-  events: [], // Array to store events
-  currentEventId: null, // New state property to hold the current event ID
-  // other relevant state properties could be added here
+  events: [],
+  currentEventId: null,
 };
 
-// Create the context
 const AppStateContext = createContext();
 
-//  a provider component
 export const AppStateProvider = ({ children }) => {
   const [state, dispatch] = useReducer(appStateReducer, initialState);
 
@@ -21,7 +17,6 @@ export const AppStateProvider = ({ children }) => {
   );
 };
 
-//  a custom hook to use the context
 export const useAppState = () => {
   const context = useContext(AppStateContext);
   if (!context) {
@@ -30,7 +25,7 @@ export const useAppState = () => {
   return context;
 };
 
-let eventIdCounter = 1; // Initialize a counter for event IDs
+let eventIdCounter = 1;
 
 const generateEventId = () => {
   return eventIdCounter++;
@@ -44,7 +39,6 @@ const appStateReducer = (state, action) => {
         name: action.payload,
         users: [],
         transactions: [],
-        // Other properties as needed
       };
       return {
         ...state,
@@ -73,7 +67,14 @@ const appStateReducer = (state, action) => {
         ...state,
         currentEventId: action.payload,
       };
-    // Add other cases
+
+    case 'DELETE_EVENT':
+      return {
+        ...state,
+        events: state.events.filter((event) => event.id !== action.payload),
+        // currentEventId: null, // Clear current event if it is deleted
+      };
+
     default:
       return state;
   }
