@@ -34,7 +34,7 @@ function EventList() {
 
   return (
     <div className="mt-4">
-      <div className="flex items-center justify-between mb-2 p-2 rounded-md bg-green-200 p-2">
+      <div className="flex items-center justify-between mb-2 p-2 rounded-md bg-indigo-300 p-2">
         <h3 className="text-lg font-bold">
           <span className="block ">Events</span>
         </h3>
@@ -45,7 +45,9 @@ function EventList() {
         {events.map((event) => (
           <li
             key={event.id}
-            className="mb-2 cursor-pointer hover:bg-green-200 transform duration-100 ease-in-out p-2 rounded-md flex justify-between items-center"
+            className={`mb-2 cursor-pointer hover:bg-indigo-200 transform duration-100 ease-in-out p-2 rounded-md flex justify-between items-center ${
+              state.currentEventId === event.id ? 'bg-indigo-300' : '' // Apply a different background color for the selected event
+            }`}
             onClick={() => {
               setCurrentEvent(event.id);
               console.log('Current Event:', event);
@@ -67,7 +69,7 @@ function EventList() {
 
       {/* Button to add a new event */}
       <button
-        className="w-full bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
+        className="w-full bg-teal-600 hover:bg-teal-500 text-white font-bold py-2 px-4 rounded"
         onClick={addEvent}
       >
         Add Event
