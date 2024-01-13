@@ -75,6 +75,15 @@ const appStateReducer = (state, action) => {
         // currentEventId: null, // Clear current event if it is deleted
       };
 
+    case 'RENAME_EVENT':
+      const { eventId: renameEventId, newName } = action.payload;
+      return {
+        ...state,
+        events: state.events.map((event) =>
+          event.id === renameEventId ? { ...event, name: newName } : event,
+        ),
+      };
+
     default:
       return state;
   }

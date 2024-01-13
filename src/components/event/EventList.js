@@ -1,5 +1,5 @@
 import { useAppState } from '../../AppStateContext';
-import React from 'react';
+import React, { useState } from 'react';
 import eventIcon from '../../assets/event.svg';
 import deleteIcon from '../../assets/delete.svg';
 
@@ -25,12 +25,22 @@ function EventList() {
       payload: eventId,
     });
   };
+
   const deleteEvent = (eventId) => {
     dispatch({
       type: 'DELETE_EVENT',
       payload: eventId,
     });
   };
+
+  const renameEvent = (eventId, newName) => {
+    dispatch({
+      type: 'RENAME_EVENT',
+      payload: { eventId, newName },
+    });
+  };
+
+  const [editableEventId, setEditableEventId] = useState(null);
 
   return (
     <div className="mt-4">
@@ -46,14 +56,31 @@ function EventList() {
           <li
             key={event.id}
             className={`mb-2 cursor-pointer hover:bg-indigo-200 transform duration-100 ease-in-out p-2 rounded-md flex justify-between items-center ${
-              state.currentEventId === event.id ? 'bg-indigo-300' : '' // Apply a different background color for the selected event
+              state.currentEventId === event.id ? 'bg-indigo-300' : ''
             }`}
             onClick={() => {
               setCurrentEvent(event.id);
               console.log('Current Event:', event);
             }}
           >
-            <span>{event.name}</span>
+            {editableEventId === event.id ? (
+              <input
+                type="text"
+                value={event.name}
+                onChange={(e) => renameEvent(event.id, e.target.value)}
+                onBlur={() => setEditableEventId(null)}
+                autoFocus
+              />
+            ) : (
+              <span
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setEditableEventId(event.id);
+                }}
+              >
+                {event.name}
+              </span>
+            )}
             <img
               src={deleteIcon}
               alt="Delete Icon"
