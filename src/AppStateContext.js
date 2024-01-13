@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useReducer } from 'react';
+import React, { createContext, useContext, useReducer, useEffect } from 'react';
 
 const initialState = {
   events: [],
@@ -9,6 +9,19 @@ const AppStateContext = createContext();
 
 export const AppStateProvider = ({ children }) => {
   const [state, dispatch] = useReducer(appStateReducer, initialState);
+
+  // Load state from local storage on component mount
+  useEffect(() => {
+    const storedState = localStorage.getItem('appState');
+    if (storedState) {
+      dispatch({ type: 'SET_STATE', payload: JSON.parse(storedState) });
+    }
+  }, []);
+
+  // Save state to local storage whenever it changes
+  useEffect(() => {
+    localStorage.setItem('appState', JSON.stringify(state));
+  }, [state]);
 
   return (
     <AppStateContext.Provider value={{ state, dispatch }}>
@@ -57,9 +70,14 @@ const appStateReducer = (state, action) => {
       };
 
     case 'SET_TRANSACTIONS':
+      const { eventId: setTransactionsEventId, transactions } = action.payload;
       return {
         ...state,
-        transactions: action.payload,
+        events: state.events.map((event) =>
+          event.id === setTransactionsEventId
+            ? { ...event, transactions }
+            : event,
+        ),
       };
 
     case 'SET_CURRENT_EVENT':
@@ -67,7 +85,6 @@ const appStateReducer = (state, action) => {
         ...state,
         currentEventId: action.payload,
       };
-
     case 'DELETE_EVENT':
       return {
         ...state,
@@ -83,6 +100,8 @@ const appStateReducer = (state, action) => {
           event.id === renameEventId ? { ...event, name: newName } : event,
         ),
       };
+    case 'SET_STATE':
+      return action.payload;
 
     default:
       return state;
