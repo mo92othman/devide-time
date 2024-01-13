@@ -1,4 +1,3 @@
-import React, { useState } from 'react';
 import { useAppState } from '../../AppStateContext';
 import UserForm from './UserForm';
 import {
@@ -8,31 +7,40 @@ import {
 
 function EventDetail() {
   const { state, dispatch } = useAppState();
-
   // Get the current event ID from the global state
   const currentEventId = state.currentEventId;
 
   // Get the current event using the currentEventId
   const currentEvent = state.events.find(
     (event) => event.id === currentEventId,
-  ) || {
-    users: [],
-    transactions: [],
-  };
+  );
+  // const transactionsList = currentEvent.transactions;
 
-  const [transactionsList, setTransactionsList] = useState([]);
+  // Check if there's no current event
+  if (!currentEvent) {
+    return (
+      <div className="min-h-screen py-8">
+        <div className="max-w-4xl mx-auto p-4">
+          <p className="text-xl font-bold text-red-500">
+            Please select an event to view details.
+          </p>
+        </div>
+      </div>
+    );
+  }
 
   const totalAmount = calculateTotalAmount(currentEvent.users);
 
   const settleDebts = () => {
     try {
-      const transactions = calculateTransactions(currentEvent.users);
+      const settle = calculateTransactions(currentEvent.users);
       dispatch({
         type: 'SET_TRANSACTIONS',
-        payload: { eventId: currentEventId, transactions },
+        payload: {
+          eventId: currentEventId, // Use currentEventId here
+          transactions: settle,
+        },
       });
-
-      setTransactionsList(transactions); // Update local state
     } catch (error) {
       console.error('Error calculating transactions:', error);
     }
@@ -68,14 +76,14 @@ function EventDetail() {
         </button>
 
         {/* Display Transactions */}
-        {transactionsList.length > 0 && (
+        {currentEvent.transactions && currentEvent.transactions.length > 0 && (
           <div className="mt-4">
             <h2 className="text-xl font-bold mb-2">Transactions:</h2>
             <ul className="list-disc pl-4">
-              {transactionsList.map((transaction, index) => (
+              {currentEvent.transactions.map((transaction, index) => (
                 <li key={index} className="mb-2">
-                  {getUserById(transaction.from).name} owes{' '}
-                  {getUserById(transaction.to).name} ${transaction.amount}
+                  {getUserById(transaction.from)?.name} owes{' '}
+                  {getUserById(transaction.to)?.name} ${transaction.amount}
                 </li>
               ))}
             </ul>
