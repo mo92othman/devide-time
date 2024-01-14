@@ -1,5 +1,6 @@
 // UserAvatarForm.js
 import React from 'react';
+import { useEffect } from 'react';
 import useAvatarAPI from './useAvatarAPI';
 import Avatar from './Avatar';
 import { useAppState } from '../../AppStateContext';
@@ -12,6 +13,12 @@ const UserAvatarForm = () => {
     // Call the fetchAvatar function to generate a new random avatar
     fetchAvatar();
   };
+
+  useEffect(() => {
+    // Fetch an initial avatar when the component mounts
+    fetchAvatar();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const handleAvatarClick = () => {
     // Dispatch an action to set the avatar URL in the state

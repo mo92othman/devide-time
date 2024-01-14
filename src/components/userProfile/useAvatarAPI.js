@@ -1,5 +1,5 @@
 // useAvatarAPI.js
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 const useAvatarAPI = () => {
   const [avatar, setAvatar] = useState(null);
@@ -26,10 +26,10 @@ const useAvatarAPI = () => {
     }
   };
 
-  useEffect(() => {
-    // Fetch an initial avatar when the component mounts
-    fetchAvatar();
-  }, []);
+  // useEffect(() => {
+  //   // Fetch an initial avatar when the component mounts
+  //   fetchAvatar();
+  // }, []);
 
   if (error) {
     console.error(error);
