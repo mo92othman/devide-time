@@ -14,7 +14,6 @@ function EventList() {
     // Dispatch an action to add a new event to the state
     dispatch({
       type: 'ADD_EVENT',
-      payload: `Event ${events.length + 1}`,
     });
   };
 

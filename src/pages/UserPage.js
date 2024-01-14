@@ -1,5 +1,5 @@
 import React from 'react';
-import UserProfile from '../components/event/UserProfile';
+import UserProfile from '../components/userProfile/UserProfile';
 import EventList from '../components/event/EventList';
 import EventDetail from '../components/event/EventDetail';
 import Header from '../components/Header';
