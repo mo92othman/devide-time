@@ -15,7 +15,7 @@ function Intro() {
         Simplify your financial dynamics and enjoy hassle-free bill splitting.
       </p>
 
-      <Link to="/events">
+      <Link to="/profile">
         <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded m-12">
           Get Started
         </button>

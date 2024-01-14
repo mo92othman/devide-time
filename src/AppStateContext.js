@@ -3,8 +3,11 @@ import React, { createContext, useContext, useReducer, useEffect } from 'react';
 const initialState = {
   events: [],
   currentEventId: null,
+  user: {
+    name: '',
+    avatarUrl: '',
+  },
 };
-
 const AppStateContext = createContext();
 
 export const AppStateProvider = ({ children }) => {
@@ -49,7 +52,7 @@ const appStateReducer = (state, action) => {
     case 'ADD_EVENT':
       const newEvent = {
         id: generateEventId(),
-        name: action.payload,
+        name: 'Add title...',
         users: [],
         transactions: [],
       };
@@ -102,6 +105,26 @@ const appStateReducer = (state, action) => {
       };
     case 'SET_STATE':
       return action.payload;
+
+    case 'SET_USER_NAME':
+      const { name } = action.payload;
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          name,
+        },
+      };
+
+    case 'SET_USER_URL':
+      const { avatarUrl } = action.payload;
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          avatarUrl,
+        },
+      };
 
     default:
       return state;
