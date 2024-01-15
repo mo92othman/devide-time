@@ -1,70 +1,84 @@
-# Getting Started with Create React App
+# Divide Time
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### Check the deployed project here
 
-## Available Scripts
+[Divide-Time]()
 
-In the project directory, you can run:
+## Overview
 
-### `npm start`
+Divide Time is a web application designed to assist users in creating and organizing events related to various scenarios such as parties, trips, or shared expenses. Built using React. Divide Time allows users to add participants, log individual contributions, and get a settlement calculations to determine who owes whom.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Project Requirements
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- A multi-page application with client-side routing..
+- The app should make use of the Context API or use custom hooks.
+- Integrate data from a public API.
+- Implement responsive design across multiple pages.
+- User-friendly interfaces for.
+- Utilize functional components and hooks; class components are not allowed.
 
-### `npm test`
+### Must-Have Features
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```
+1. Event Creation: Enable users to add / create events.
+2. Event input: Users can add participants to an event.
+3. Users can choose a username and a profile avatar.
+4. Users can delete / edit events.
+5. Users can settle an event.
+```
 
-### `npm run build`
+### Nice-to-Have Features
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. User Authentication: Implement a user authentication system.
+2. Theme Switcher: Include a feature to change the application theme.
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Public API in Use
 
-### `npm run eject`
+- Avatar generator ( <https://api.multiavatar.com/> )
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Getting Started
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```bash
+# Clone this repository
+$ git clone https://github.com/mo92othman/devide-time.git
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+# Go into the repository
+$ cd devide-time
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+# Install dependencies
+$ npm install
 
-## Learn More
+# Run the app
+$ npm start
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Runs the app in the development mode.
+Open <http://localhost:3000> to view it in the browser.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Directory Structure
 
-### Code Splitting
+``````
+Divide-Time
+├── public
+├── src
+│ ├── asses
+│ ├── components
+│ ├── pages
+│ ├── helpers
+│ ├── App.js
+│ ├── Index.js
+│ ├── AppStateContext.js
+``````
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Color Palette
 
-### Analyzing the Bundle Size
+[ color palette]
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+![made-with-react](https://user-images.githubusercontent.com/55986532/155530133-56b7eaf1-92c5-4395-a0ad-e92805dbce2a.svg)
+![made-with-javascript](https://user-images.githubusercontent.com/55986532/155530136-03972f18-74a2-47a4-97ea-876411c2ee4a.svg)
+[![forthebadge](data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNjIuMjc1MDEyOTY5OTcwNyIgaGVpZ2h0PSIzNSIgdmlld0JveD0iMCAwIDE2Mi4yNzUwMTI5Njk5NzA3IDM1Ij48cmVjdCB3aWR0aD0iNjAuNjYyNTAyMjg4ODE4MzYiIGhlaWdodD0iMzUiIGZpbGw9IiM1MzUzNTMiLz48cmVjdCB4PSI2MC42NjI1MDIyODg4MTgzNiIgd2lkdGg9IjEwMS42MTI1MTA2ODExNTIzNCIgaGVpZ2h0PSIzNSIgZmlsbD0iIzM4OUFENSIvPjx0ZXh0IHg9IjMwLjMzMTI1MTE0NDQwOTE4IiB5PSIxNy41IiBmb250LXNpemU9IjEyIiBmb250LWZhbWlseT0iJ1JvYm90bycsIHNhbnMtc2VyaWYiIGZpbGw9IiNGRkZGRkYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGFsaWdubWVudC1iYXNlbGluZT0ibWlkZGxlIiBsZXR0ZXItc3BhY2luZz0iMiI+VVNFUzwvdGV4dD48dGV4dCB4PSIxMTEuNDY4NzU3NjI5Mzk0NTMiIHk9IjE3LjUiIGZvbnQtc2l6ZT0iMTIiIGZvbnQtZmFtaWx5PSInTW9udHNlcnJhdCcsIHNhbnMtc2VyaWYiIGZpbGw9IiNGRkZGRkYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtd2VpZ2h0PSI5MDAiIGFsaWdubWVudC1iYXNlbGluZT0ibWlkZGxlIiBsZXR0ZXItc3BhY2luZz0iMiI+VEFJTFdJTkQ8L3RleHQ+PC9zdmc+)](https://forthebadge.com)
 
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)
