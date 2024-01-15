@@ -5,7 +5,7 @@ function Header() {
     <header className="bg-gradient-to-r from-indigo-500 via-purple-500 to-amber-400 text-white p-4 border-b-4 border-white flex items-center w-full justify-between shadow-lg">
       <div className="flex items-center">
         <img
-          src="/assets/logo.jpg"
+          src="/assets/logo.svg"
           alt="Logo"
           className="w-16 h-16 rounded-full"
         />
