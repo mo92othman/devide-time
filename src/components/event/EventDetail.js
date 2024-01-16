@@ -4,6 +4,7 @@ import {
   calculateTotalAmount,
   calculateTransactions,
 } from '../../helpers/graphUtils';
+import ListPng from '../../assets/list.png'; // Import the choose image
 
 function EventDetail() {
   const { state, dispatch } = useAppState();
@@ -19,13 +20,11 @@ function EventDetail() {
   // Check if there's no current event
   if (!currentEvent) {
     return (
-      <div className="min-h-screen flex flex-col items-center justify-center">
-        <p className="text-xl font-bold text-red-500">
+      <div className="min-h-screen flex flex-col  ">
+        <h1 className="text-2xl font-bold text-gray-500 mb-4 mx-auto mt-8">
           Please select an event to view details.
-        </p>
-        <h1 className="mt-2 text-6xl text-red-500 border-4 border-red-500 rounded-full inline-flex items-center justify-center h-12 w-12 p-10">
-          !
         </h1>
+        <img src={ListPng} alt="Empty" className="mt-4 w-1/6 h-auto mx-auto" />
       </div>
     );
   }
