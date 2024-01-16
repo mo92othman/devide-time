@@ -59,7 +59,6 @@ function EventList() {
             }`}
             onClick={() => {
               setCurrentEvent(event.id);
-              console.log('Current Event:', event);
             }}
           >
             {editableEventId === event.id ? (
