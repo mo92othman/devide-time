@@ -1,15 +1,16 @@
-// useAvatarAPI.js
 import { useState } from 'react';
 
 const useAvatarAPI = () => {
   const [avatar, setAvatar] = useState(null);
   const [error, setError] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   const generateRandomNumber = () => {
     return Math.random();
   };
 
   const fetchAvatar = async () => {
+    setIsLoading(true); // Set loading to true when starting the fetch
     try {
       const randomNumber = generateRandomNumber();
       const response = await fetch(
@@ -23,19 +24,12 @@ const useAvatarAPI = () => {
       }
     } catch (error) {
       setError(`Error fetching avatar: ${error.message}`);
+    } finally {
+      setIsLoading(false); // Set loading to false after fetch completion
     }
   };
 
-  // useEffect(() => {
-  //   // Fetch an initial avatar when the component mounts
-  //   fetchAvatar();
-  // }, []);
-
-  if (error) {
-    console.error(error);
-  }
-
-  return { avatar, fetchAvatar };
+  return { avatar, isLoading, error, fetchAvatar };
 };
 
 export default useAvatarAPI;
