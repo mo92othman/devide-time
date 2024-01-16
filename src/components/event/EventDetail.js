@@ -55,6 +55,10 @@ function EventDetail() {
         <h1 className="text-3xl font-bold text-cyan-800 mb-4">
           Total Amount: €{totalAmount}
         </h1>
+        <p className="text-gray-400 mb-4">
+          Add your friends/participants in an occasion and note how much they
+          paid. Then, settle the event to know who owes whom and how much.
+        </p>
 
         <ul className="list-none pl-0">
           {currentEvent.users.map((user, index) => (
