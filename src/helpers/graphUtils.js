@@ -2,14 +2,16 @@ export function calculateTotalAmount(users) {
   return users.reduce((total, user) => total + user.amount, 0);
 }
 
-// graphUtils.js
 export const calculateTransactions = (users) => {
   const transactions = [];
 
   // Step 1: Calculate Balances
+  const totalAmount = calculateTotalAmount(users);
+  const averageBalance = totalAmount / users.length;
+
   const balances = users.map((user) => ({
     id: user.id,
-    balance: user.amount - calculateTotalAmount(users) / users.length,
+    balance: user.amount - averageBalance,
   }));
 
   // Step 2: Identify Pairs
@@ -42,10 +44,6 @@ export const calculateTransactions = (users) => {
       }
     }
   }
-
-  // Step 4: Display or Store Transactions
-  console.log('Balances:', balances);
-  console.log('Transactions:', transactions);
 
   return transactions;
 };
