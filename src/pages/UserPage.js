@@ -15,13 +15,13 @@ function UserPage() {
       <Header />
       <div className="lg:flex  mr-auto">
         {/* Sidebar */}
-        <div className="w-1/4 p-5 bg-gradient-to-t from-indigo-100 to-transparent shadow-x2 border-r-4 border-grey-300">
+        <div className="lg:w-1/4 md:w-1/1 p-5 bg-gradient-to-t from-indigo-100 to-transparent lg:shadow-x2 lg:border-r-4 border-grey-300">
           <UserProfile />
           <EventList />
         </div>
 
         {/* Main Content */}
-        <div className="w-3/4 p-4 bg-gradient-to-b from-purple-50 to-transparent">
+        <div className="lg:w-3/4 md:w-1/1 p-4 ">
           {state.events.length === 0 ? (
             <div className="text-center text-gray-500  min-h-screen py-8">
               <h1 className="text-2xl font-bold mb-4">

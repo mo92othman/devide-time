@@ -16,7 +16,7 @@ function Intro() {
       </p>
 
       <Link to="/profile">
-        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded m-12">
+        <button className="bg-cyan-800 hover:bg-cyan-600 text-white font-bold py-2 px-7 rounded m-12">
           Get Started
         </button>
       </Link>
