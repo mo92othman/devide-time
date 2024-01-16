@@ -28,8 +28,8 @@ const UserForm = ({ eventId }) => {
 
   return (
     <div className="mt-4">
-      <label className="block text-gray-700 text-sm font-bold mb-2">
-        Name:
+      <label className="block text-cyan-800 text-sm font-bold mb-2">
+        Participant:
         <input
           className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           type="text"
@@ -37,8 +37,8 @@ const UserForm = ({ eventId }) => {
           onChange={(e) => setNewUserName(e.target.value)}
         />
       </label>
-      <label className="block text-gray-700 text-sm font-bold mb-2">
-        Amount:
+      <label className="block text-cyan-800 text-sm font-bold mb-2">
+        Contribution:
         <input
           className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           type="number"

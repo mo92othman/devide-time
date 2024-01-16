@@ -35,14 +35,14 @@ const UserAvatarForm = () => {
   return (
     <div className="max-w-md mx-auto mt-8">
       <button
-        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+        className="bg-indigo-600 hover:bg-indigo-500 text-white  py-1 px-4 rounded mb-3"
         onClick={handleGenerateAvatar}
       >
         Change your Avatar...
       </button>
       {avatar && <Avatar svgString={avatar} />}
       <button
-        className="bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600"
+        className="bg-green-500 text-white px-4 rounded hover:bg-green-600 mt-3"
         onClick={handleAvatarClick}
       >
         save
