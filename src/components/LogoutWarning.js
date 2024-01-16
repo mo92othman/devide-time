@@ -1,4 +1,3 @@
-// LogoutWarning.js
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useAppState } from '../AppStateContext';
@@ -13,7 +12,7 @@ function LogoutWarning({ onClose }) {
   };
 
   return (
-    <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-50">
+    <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center z-50  bg-black bg-opacity-50">
       <div className="bg-white p-8 rounded shadow-lg">
         <p className="text-lg text-black font-semibold mb-4">
           This will delete your data. Are you sure you want to log out?
