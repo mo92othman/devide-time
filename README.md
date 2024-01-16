@@ -2,11 +2,19 @@
 
 ### Check the deployed project here
 
-[Divide-Time]()
+[Divide-Time](https://divide-time.netlify.app/)
 
 ## Overview
 
 Divide Time is a web application designed to assist users in creating and organizing events related to various scenarios such as parties, trips, or shared expenses. Built using React. Divide Time allows users to add participants, log individual contributions, and get a settlement calculations to determine who owes whom.
+
+## Color Palette
+
+![colors](https://raw.githubusercontent.com/mo92othman/devide-time/update-readme-2/src/assets/colors.jpg)
+
+![laptop](https://raw.githubusercontent.com/mo92othman/devide-time/update-readme-2/src/assets/laptop-mockup.jpg)
+
+---
 
 ## Project Requirements
 
@@ -58,6 +66,12 @@ $ npm start
 Runs the app in the development mode.
 Open <http://localhost:3000> to view it in the browser.
 
+#### Note
+
+If you are using VS Code, consider installing the [Tailwind Fold extension](https://marketplace.visualstudio.com/items?itemName=stivo.tailwind-fold) to make the long Tailwind CSS classes disappear, making the code more readable and less annoying.
+
+---
+
 ## Directory Structure
 
 ``````
@@ -73,12 +87,9 @@ Divide-Time
 │ ├── AppStateContext.js
 ``````
 
-## Color Palette
-
-[ color palette]
+---
 
 ![made-with-react](https://user-images.githubusercontent.com/55986532/155530133-56b7eaf1-92c5-4395-a0ad-e92805dbce2a.svg)
 ![made-with-javascript](https://user-images.githubusercontent.com/55986532/155530136-03972f18-74a2-47a4-97ea-876411c2ee4a.svg)
-[![forthebadge](data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNjIuMjc1MDEyOTY5OTcwNyIgaGVpZ2h0PSIzNSIgdmlld0JveD0iMCAwIDE2Mi4yNzUwMTI5Njk5NzA3IDM1Ij48cmVjdCB3aWR0aD0iNjAuNjYyNTAyMjg4ODE4MzYiIGhlaWdodD0iMzUiIGZpbGw9IiM1MzUzNTMiLz48cmVjdCB4PSI2MC42NjI1MDIyODg4MTgzNiIgd2lkdGg9IjEwMS42MTI1MTA2ODExNTIzNCIgaGVpZ2h0PSIzNSIgZmlsbD0iIzM4OUFENSIvPjx0ZXh0IHg9IjMwLjMzMTI1MTE0NDQwOTE4IiB5PSIxNy41IiBmb250LXNpemU9IjEyIiBmb250LWZhbWlseT0iJ1JvYm90bycsIHNhbnMtc2VyaWYiIGZpbGw9IiNGRkZGRkYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGFsaWdubWVudC1iYXNlbGluZT0ibWlkZGxlIiBsZXR0ZXItc3BhY2luZz0iMiI+VVNFUzwvdGV4dD48dGV4dCB4PSIxMTEuNDY4NzU3NjI5Mzk0NTMiIHk9IjE3LjUiIGZvbnQtc2l6ZT0iMTIiIGZvbnQtZmFtaWx5PSInTW9udHNlcnJhdCcsIHNhbnMtc2VyaWYiIGZpbGw9IiNGRkZGRkYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtd2VpZ2h0PSI5MDAiIGFsaWdubWVudC1iYXNlbGluZT0ibWlkZGxlIiBsZXR0ZXItc3BhY2luZz0iMiI+VEFJTFdJTkQ8L3RleHQ+PC9zdmc+)](https://forthebadge.com)
 
 ![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)
