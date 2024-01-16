@@ -126,6 +126,10 @@ const appStateReducer = (state, action) => {
         },
       };
 
+    case 'CLEAR_LOCAL_STORAGE':
+      localStorage.removeItem('appState');
+      return initialState; // Reset the state to the initial state
+
     default:
       return state;
   }
