@@ -15,7 +15,7 @@ function UserPage() {
       <Header />
       <div className="lg:flex  mr-auto">
         {/* Sidebar */}
-        <div className="lg:w-1/4 md:w-1/1 p-5 bg-gradient-to-t from-indigo-100 to-transparent lg:shadow-x2 lg:border-r-4 border-grey-300">
+        <div className="lg:w-1/4 md:w-1/1 p-5 bg-gradient-to-t from-purple-100 to-transparent lg:shadow-x2 lg:border-r-4 border-grey-300">
           <UserProfile />
           <EventList />
         </div>

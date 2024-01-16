@@ -1,19 +1,38 @@
 import React, { useState } from 'react';
 import LogoutWarning from './LogoutWarning';
 
+const themeColors = [
+  'from-indigo-500 via-purple-500 to-amber-400',
+  'from-fuchsia-500 via-cyan-500 to-purple-500',
+  'bg-gradient-to-r from-blue-200 to-cyan-200',
+  'bg-gradient-to-r from-fuchsia-600 to-pink-600',
+];
+
 function Header() {
-  const [showWarning, setShoWarning] = useState(false);
+  const [showWarning, setShowWarning] = useState(false);
+  const [currentColorIndex, setCurrentColorIndex] = useState(0);
+
   const handleLogout = () => {
-    // Show the show the log out warning
-    setShoWarning(true);
+    // Show the logout warning
+    setShowWarning(true);
   };
 
   const hideLogoutWarning = () => {
     // Close the confirmation dialog
-    setShoWarning(false);
+    setShowWarning(false);
   };
+
+  const handleChangeTheme = () => {
+    // Cycle through the theme colors
+    setCurrentColorIndex((prevIndex) => (prevIndex + 1) % themeColors.length);
+  };
+
+  const currentThemeColor = themeColors[currentColorIndex];
+
   return (
-    <header className="bg-gradient-to-r from-indigo-500 via-purple-500 to-amber-400 text-white p-4 border-b-4 border-white flex flex-col md:flex-row items-center w-full justify-between shadow-lg">
+    <header
+      className={`bg-gradient-to-r text-white p-4 border-b-4 border-white flex flex-col md:flex-row items-center w-full justify-between shadow-lg ${currentThemeColor}`}
+    >
       <div className="flex items-center mb-4 md:mb-0">
         <img
           src="/assets/logo.svg"
@@ -31,7 +50,10 @@ function Header() {
         >
           Sign out
         </button>
-        <button className="bg-indigo-600 hover:bg-indigo-500 text-white font-bold lg:py-2 sm:py-1 px-4 rounded">
+        <button
+          onClick={handleChangeTheme}
+          className="bg-indigo-600 hover:bg-indigo-500 text-white font-bold lg:py-2 sm:py-1 px-4 rounded"
+        >
           Change Theme
         </button>
       </div>
